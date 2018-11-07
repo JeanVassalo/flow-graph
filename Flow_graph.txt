@@ -135,14 +135,18 @@ function next() {
       prompt("Impossível atingir este nó");
       break;
     }
-      if (percorredor.deliver[i] == next_node) {
+     
+    i++;
+  }
+   if (percorredor.deliver[i] == next_node) {
       document.write("Leva até: ")
       prompt("Você irá até o nó "+next_node);
       //AQUI DEVERIA VIR O CONTADOR DE CUSTO E A FUNÇÃO CHOOSE NEXT NODE, IF NEXT_NODE==2, PERCORREDOR=NODE2
    
     }
-    i++;
-  }
 }
 next()
 //function CHOOSE_NEXT_NODE(){ if(next_node==2){percorredor=node2}else if...}
+
+
+
