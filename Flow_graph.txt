@@ -127,26 +127,54 @@ function status() {
 } //status()
 
 //Caminhos
+function choosenode(k) {
+  if (k == 1)
+    percorredor = node1
+  else if (k == 2)
+    percorredor = node2
+  else if (k == 3)
+    percorredor = node3
+  else if (k == 4)
+    percorredor = node4
+  else if (k == 5)
+    percorredor = node5
+  else if (k == 6)
+    percorredor = node6
+  else if (k == 7)
+    percorredor = node7
+}
+ var jarray=[];
+ var jarray_count=0;
+  var i = 0;//percorre o cost e sabe a posição do delivery q queremos
+  var j = 0;//guarda o custo do fluxo
+  var k = 0;//guarda o nó que será usado
 function next() {
-  var i = 0;
-  var next_node = prompt("Você está no " + percorredor.node_number + " e pode ir para o(s) nó(s): " + percorredor.deliver + " com o custo respectivamente de: " + percorredor.cost + " digite o nó que deseja ir");
-  while (next_node != percorredor.deliver[i]) {
-    if (percorredor.deliver[i] == null) {
-      prompt("Impossível atingir este nó");
-      break;
+ 	 i = 0;//percorre o cost e sabe a posição do delivery q queremos
+ 	 j = 0;//guarda o custo do fluxo
+ 	 k = 0;//guarda o nó que será usado
+ 
+  while (percorredor.cost[i] != null) {
+  document.write(percorredor.cost[i]+ "<br/>");
+    if (j < percorredor.cost[i]) {
+      j = percorredor.cost[i];
+      jarray[jarray_count]=percorredor.cost[i];
+      k = percorredor.deliver[i];
+      jarray_count++;
     }
-     
     i++;
   }
-   if (percorredor.deliver[i] == next_node) {
-      document.write("Leva até: ")
-      prompt("Você irá até o nó "+next_node);
-      //AQUI DEVERIA VIR O CONTADOR DE CUSTO E A FUNÇÃO CHOOSE NEXT NODE, IF NEXT_NODE==2, PERCORREDOR=NODE2
-   
-    }
+  if (j!=0)
+  choosenode(k);
+  //AQUI DEVERIA VIR O CONTADOR DE CUSTO E A FUNÇÃO CHOOSE NEXT NODE, IF NEXT_NODE==2, PERCORREDOR=NODE2
 }
-next()
-//function CHOOSE_NEXT_NODE(){ if(next_node==2){percorredor=node2}else if...}
-
+while (percorredor.deliver!=null){
+//document.write("<br/> Leva até: " + percorredor.deliver + " com custo " + percorredor.cost + "<br/>")
+	status()
+	next()
+  
+}
+status()
+document.write("<br/> Leva até: " + percorredor.deliver + " com custo " + percorredor.cost + "<br/>")
+document.write(jarray);
 
 
